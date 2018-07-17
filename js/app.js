@@ -33,6 +33,10 @@ var Player = function(x,y,speed){
   this.sprite = 'images/char-boy.png';
 };
 
+Player.prototype.update = function() {
+
+};
+
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
