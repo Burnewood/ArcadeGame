@@ -39,7 +39,19 @@ var Player = function(x,y,speed){
 };
 
 Player.prototype.update = function() {
-
+  //need to stop player from moving out of canvas and below or above images (causes weird copy effect)
+  if (this.x<0){
+    this.x=0;
+  }
+  if (this.x>400){
+    this.x=400;
+  }
+  if (this.y>400){
+    this.y=400;
+  }
+  if (this.y<0){
+    this.y=0;
+  }
 };
 
 Player.prototype.render = function() {
