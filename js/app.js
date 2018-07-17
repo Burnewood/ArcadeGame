@@ -45,6 +45,23 @@ Player.prototype.update = function() {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+//add ability to control player movement using hangleInput below
+Player.prototype.handleInput = function(keyPress){
+  switch (keyPress){
+      case 'left':
+        this.x -= this.speed +50;
+        break;
+      case 'up':
+        this.y -= this.speed +50;
+        break;
+      case 'right':
+        this.x += this.speed +50;
+        break;
+      case 'down':
+        this.y += this.speed +50;
+        break;
+  }
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
