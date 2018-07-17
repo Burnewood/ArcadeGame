@@ -49,8 +49,10 @@ Player.prototype.update = function() {
   if (this.y>400){
     this.y=400;
   }
+  //change upper barrier to send player to start when they cross the water
   if (this.y<0){
-    this.y=0;
+    this.y=400;
+    this.x=200;
   }
 };
 
