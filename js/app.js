@@ -21,6 +21,12 @@ Enemy.prototype.update = function(dt) {
     if(this.x>600){
       this.x = -75;
     }
+    //add in check to see if player and enemy collide
+    if(player.x < this.x +50 && player.x +50 > this.x && player.y < this.y +25 && player.y +35 > this.y){
+      //reset player to start
+      player.x = 200;
+      player.y = 375;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -51,7 +57,7 @@ Player.prototype.update = function() {
   }
   //change upper barrier to send player to start when they cross the water
   if (this.y<0){
-    this.y=400;
+    this.y=375;
     this.x=200;
   }
 };
@@ -66,13 +72,13 @@ Player.prototype.handleInput = function(keyPress){
         this.x -= this.speed +50;
         break;
       case 'up':
-        this.y -= this.speed +50;
+        this.y -= this.speed +25;
         break;
       case 'right':
         this.x += this.speed +50;
         break;
       case 'down':
-        this.y += this.speed +50;
+        this.y += this.speed +25;
         break;
   }
 };
@@ -83,7 +89,7 @@ Player.prototype.handleInput = function(keyPress){
 var allEnemies = [];
 var enemyPosition=[55,145,225];
 
-var player = new Player(200,400,50);
+var player = new Player(200,375,50);
 var enemy;
 
 enemyPosition.forEach(function(posY){
