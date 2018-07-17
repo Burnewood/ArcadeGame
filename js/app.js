@@ -17,7 +17,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed *dt;
-
+    // this should reset enemies to starting positions when they go off screen
+    if(this.x>600){
+      this.x = -75;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
