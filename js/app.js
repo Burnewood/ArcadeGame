@@ -20,6 +20,8 @@ Enemy.prototype.update = function(dt) {
     // this should reset enemies to starting positions when they go off screen
     if(this.x>600){
       this.x = -75;
+      // change speed to introduce unpredictability (uses same setup as creation of enemy)
+      this.speed = 100 + Math.floor(Math.random()*512);
     }
     //add in check to see if player and enemy collide
     if(player.x < this.x +50 && player.x +50 > this.x && player.y < this.y +25 && player.y +35 > this.y){
@@ -53,7 +55,7 @@ Player.prototype.update = function() {
     this.x=400;
   }
   if (this.y>400){
-    this.y=400;
+    this.y=375;
   }
   //change upper barrier to send player to start when they cross the water
   if (this.y<0){
@@ -72,13 +74,13 @@ Player.prototype.handleInput = function(keyPress){
         this.x -= this.speed +50;
         break;
       case 'up':
-        this.y -= this.speed +25;
+        this.y -= this.speed +30;
         break;
       case 'right':
         this.x += this.speed +50;
         break;
       case 'down':
-        this.y += this.speed +25;
+        this.y += this.speed +30;
         break;
   }
 };
