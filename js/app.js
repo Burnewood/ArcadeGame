@@ -25,6 +25,8 @@ Enemy.prototype.update = function(dt) {
     }
     //add in check to see if player and enemy collide
     if(player.x < this.x +50 && player.x +50 > this.x && player.y < this.y +25 && player.y +35 > this.y){
+      // remove a life
+      player.lives -= 1;
       //reset player to start
       player.x = 200;
       player.y = 375;
@@ -34,6 +36,11 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //use enemy rendering to produce score and life counters on screen
+    ctx.fillStyle = "white";
+    ctx.font = "16px Comic Sans MS";
+    ctx.fillText("Score: " + player.score, 25, 70);
+    ctx.fillText("Lives: " + player.lives, 125, 70);
 };
 
 // Now write your own player class
@@ -42,6 +49,9 @@ Enemy.prototype.render = function() {
 var Player = function(x,y,speed){
   this.x=x;
   this.y=y;
+  // insert score and life counters
+  this.score=0;
+  this.lives=5;
   this.speed=speed;
   this.sprite = 'images/char-boy.png';
 };
@@ -59,6 +69,8 @@ Player.prototype.update = function() {
   }
   //change upper barrier to send player to start when they cross the water
   if (this.y<0){
+    // add points to score
+    this.score +=50;
     this.y=375;
     this.x=200;
   }
