@@ -27,6 +27,22 @@ Enemy.prototype.update = function(dt) {
     if(player.x < this.x +50 && player.x +50 > this.x && player.y < this.y +25 && player.y +35 > this.y){
       // remove a life
       player.lives -= 1;
+      // add in engame when lives = 0
+      if(player.lives==0){
+        swal({
+          title:'You are out of lives!',
+          text:'With a score of '+player.score+' points',
+          type:'warning',
+          confirmButtonText: 'Play again?'
+         }).then(function(confirmed){
+           if(confirmed){
+             player.score = 0;
+             player.lives = 5;
+             player.x = 200;
+             player.y = 375;
+           }
+         });
+      }
       //reset player to start
       player.x = 200;
       player.y = 375;
