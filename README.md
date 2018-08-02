@@ -4,6 +4,8 @@
 
 This is an Udacity project intended to demonstrate javascript, css and html skills.
 
+To launch the game simply open the index file in your browser.
+
 To play use the arrow keys on your keyboard to move across to the water. Score will be tracked for every time you reach the end, each time you are hit by a bug you will lose a life.
 
 ## Dependencies
