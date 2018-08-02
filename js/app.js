@@ -54,9 +54,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //use enemy rendering to produce score and life counters on screen
     ctx.fillStyle = "White";
-    ctx.font = "25px Verdana";
-    ctx.fillText("Score: " + player.score, 125, 75);
-    ctx.fillText("Lives: " + player.lives, 275, 75);
+    ctx.font = "italic 20px Verdana";
+    ctx.fillText("SCORE: " + player.score, 125, 75);
+    ctx.fillText("LIVES: " + player.lives, 275, 75);
 };
 
 // Now write your own player class
@@ -126,6 +126,13 @@ enemyPosition.forEach(function(posY){
   enemy = new Enemy(0,posY,100 + Math.floor(Math.random()*512));
   allEnemies.push(enemy);
 });
+//stop keys from scrolling window
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
