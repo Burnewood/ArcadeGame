@@ -53,10 +53,10 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //use enemy rendering to produce score and life counters on screen
-    ctx.fillStyle = "white";
-    ctx.font = "16px Comic Sans MS";
-    ctx.fillText("Score: " + player.score, 25, 70);
-    ctx.fillText("Lives: " + player.lives, 125, 70);
+    ctx.fillStyle = "White";
+    ctx.font = "25px Verdana";
+    ctx.fillText("Score: " + player.score, 125, 75);
+    ctx.fillText("Lives: " + player.lives, 275, 75);
 };
 
 // Now write your own player class
